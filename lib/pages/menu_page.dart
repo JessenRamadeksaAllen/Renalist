@@ -22,17 +22,28 @@ class _MenuPageState extends State<MenuPage> {
       final double? weight = double.tryParse(weightText);
 
       if (age != null && weight != null && age > 0 && weight > 0) {
-        // Generate recommendations based on weight and age
         setState(() {
           if (age < 18) {
             _menuRecommendation =
-                'Rekomendasi: Bubur ayam tanpa MSG, jus buah rendah kalium seperti apel, dan telur rebus.';
+                // ignore: prefer_interpolation_to_compose_strings, prefer_adjacent_string_concatenation
+                '• Sarapan: Bubur ayam tanpa MSG, jus apel, telur rebus\n' +
+                '• Makan Siang: Nasi putih, ayam kukus tanpa kulit, tumis labu siam\n' +
+                '• Snack: Biskuit rendah garam, jus stroberi\n' +
+                '• Makan Malam: Sup ayam tanpa garam, sayur bening bayam';
           } else if (age < 60) {
             _menuRecommendation =
-                'Rekomendasi: Nasi putih, ikan panggang rendah garam, dan sayur bening bayam.';
+                // ignore: prefer_interpolation_to_compose_strings, prefer_adjacent_string_concatenation
+                '• Sarapan: Oatmeal tanpa gula, pisang kecil, teh tawar\n' +
+                '• Makan Siang: Nasi putih, ikan panggang tanpa garam, tumis kacang panjang\n' +
+                '• Snack: Apel kecil, jus pir\n' +
+                '• Makan Malam: Bubur kacang hijau tanpa gula, tumis brokoli, ikan kukus';
           } else {
             _menuRecommendation =
-                'Rekomendasi: Bubur kacang hijau tanpa gula, ikan kukus, dan tumis labu siam.';
+                // ignore: prefer_interpolation_to_compose_strings, prefer_adjacent_string_concatenation
+                '• Sarapan: Bubur havermut, telur rebus, teh hangat tanpa gula\n' +
+                '• Makan Siang: Nasi putih, daging sapi rebus tanpa garam, sayur sop\n' +
+                '• Snack: Buah pepaya kecil, jus melon\n' +
+                '• Makan Malam: Sup ayam tanpa kulit, tumis labu siam, semangka';
           }
         });
       } else {
@@ -75,28 +86,62 @@ class _MenuPageState extends State<MenuPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Input field for age
+            // Input field for age (matching BmiPage style)
             TextField(
               controller: _ageController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
+              style: const TextStyle(color: Colors.white), // Set the text color to white
+              decoration: InputDecoration(
                 labelText: 'Masukkan Usia',
-                border: OutlineInputBorder(),
+                hintText: 'Contoh: 25',
+                labelStyle: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+                hintStyle: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.white70,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(
+                    color: Colors.white,
+                    width: 2.0,
+                  ),
+                ),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Colors.white.withOpacity(0.2), // Slight transparency for the background
               ),
             ),
             const SizedBox(height: 16),
 
-            // Input field for weight
+            // Input field for weight (matching BmiPage style)
             TextField(
               controller: _weightController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
+              style: const TextStyle(color: Colors.white), // Set the text color to white
+              decoration: InputDecoration(
                 labelText: 'Masukkan Berat Badan (kg)',
-                border: OutlineInputBorder(),
+                hintText: 'Contoh: 60',
+                labelStyle: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+                hintStyle: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.white70,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(
+                    color: Colors.white,
+                    width: 2.0,
+                  ),
+                ),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Colors.white.withOpacity(0.2), // Slight transparency for the background
               ),
             ),
             const SizedBox(height: 32),
@@ -121,14 +166,17 @@ class _MenuPageState extends State<MenuPage> {
 
             // Display menu recommendation
             if (_menuRecommendation.isNotEmpty)
-              Text(
-                _menuRecommendation,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  _menuRecommendation,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                  textAlign: TextAlign.left,
                 ),
-                textAlign: TextAlign.center,
               ),
           ],
         ),

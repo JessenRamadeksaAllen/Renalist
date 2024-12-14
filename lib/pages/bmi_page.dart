@@ -14,23 +14,24 @@ class _BmiPageState extends State<BmiPage> {
   String _bmiResult = '';
   String _bmiCategory = '';
 
+  // Method to calculate BMI
   void _calculateBMI() {
     final String heightText = _heightController.text;
     final String weightText = _weightController.text;
 
-    // Check if height and weight values are not empty and valid
+    // Validate input for height and weight
     if (heightText.isNotEmpty && weightText.isNotEmpty) {
       final double? height = double.tryParse(heightText);
       final double? weight = double.tryParse(weightText);
 
-      // Validate the parsing to ensure we have valid numbers
+      // Validate parsed values
       if (height != null && weight != null && height > 0 && weight > 0) {
-        // BMI calculation with height in cm (height / 100 gives the height in meters)
-        final double bmi = weight / ((height / 100) * (height / 100)); 
+        // Calculate BMI (height in meters)
+        final double bmi = weight / ((height / 100) * (height / 100));
         setState(() {
           _bmiResult = bmi.toStringAsFixed(2);
 
-          // Determine the BMI category
+          // Determine BMI category
           if (bmi < 18.5) {
             _bmiCategory = 'Underweight';
           } else if (bmi >= 18.5 && bmi < 24.9) {
@@ -85,11 +86,28 @@ class _BmiPageState extends State<BmiPage> {
             TextField(
               controller: _heightController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
+              style: const TextStyle(color: Colors.white), // Set the text color to white
+              decoration: InputDecoration(
                 labelText: 'Enter Height (cm)',
-                border: OutlineInputBorder(),
+                hintText: 'Enter your height in centimeters',
+                labelStyle: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white, // Label color changed to white
+                ),
+                hintStyle: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.white70,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(
+                    color: Colors.white,
+                    width: 2.0,
+                  ),
+                ),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Colors.white.withOpacity(0.2), // Slight transparency
               ),
             ),
             const SizedBox(height: 16),
@@ -98,11 +116,28 @@ class _BmiPageState extends State<BmiPage> {
             TextField(
               controller: _weightController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
+              style: const TextStyle(color: Colors.white), // Set the text color to white
+              decoration: InputDecoration(
                 labelText: 'Enter Weight (kg)',
-                border: OutlineInputBorder(),
+                hintText: 'Enter your weight in kilograms',
+                labelStyle: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white, // Label color changed to white
+                ),
+                hintStyle: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.white70,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(
+                    color: Colors.white,
+                    width: 2.0,
+                  ),
+                ),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Colors.white.withOpacity(0.2), // Slight transparency
               ),
             ),
             const SizedBox(height: 32),

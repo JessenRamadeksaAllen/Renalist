@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/nutrients_page.dart'; // For 'Hitung Kebutuhan Nutrisi'
+import 'package:myapp/pages/nutrisi_page.dart'; // For 'Kebutuhan Nutrisi Harian'
 import 'pages/bmi_page.dart';
-import 'pages/nutrisi_page.dart';
 import 'pages/menu_page.dart';
+import 'pages/calories_page.dart';
 
 void main() {
   runApp(const RenalistApp());
@@ -111,94 +113,136 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               // BMI Button
-              MouseRegion(
-                onEnter: (_) => _changeButtonColor(true),
-                onExit: (_) => _changeButtonColor(false),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: const Color(0xFF0D2D6A), // Elegant deep blue
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12), // Rounded corners
-                    ),
-                    shadowColor: const Color(0xFF0D2D6A).withOpacity(0.4),
-                    elevation: 8, // Higher elevation for a premium feel
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: const Color(0xFF0D2D6A), // Elegant deep blue
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12), // Rounded corners
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const BmiPage()),
-                    );
-                  },
-                  child: const Text(
-                    'Cek BMI',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  shadowColor: const Color(0xFF0D2D6A).withOpacity(0.4),
+                  elevation: 8, // Higher elevation for a premium feel
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const BmiPage()),
+                  );
+                },
+                child: const Text(
+                  'Cek BMI',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
               const SizedBox(height: 16),
-              // Nutrisi Button
-              MouseRegion(
-                onEnter: (_) => _changeButtonColor(true),
-                onExit: (_) => _changeButtonColor(false),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: const Color(0xFF1D4B91), // Lighter blue for elegance
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    shadowColor: const Color(0xFF1D4B91).withOpacity(0.4),
-                    elevation: 8,
+              // Kebutuhan Nutrisi Harian Button (Navigates to NutrisiPage)
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: const Color(0xFF1D4B91), // Lighter blue for elegance
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const NutrisiPage()),
-                    );
-                  },
-                  child: const Text(
-                    'Hitung Kebutuhan Nutrisi',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  shadowColor: const Color(0xFF1D4B91).withOpacity(0.4),
+                  elevation: 8,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const NutrisiPage()), // Navigating to NutrisiPage
+                  );
+                },
+                child: const Text(
+                  'Kebutuhan Nutrisi Harian',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              // Hitung Kebutuhan Nutrisi Button (Navigates to NutrientsPage)
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: const Color(0xFF1D4B91), // Lighter blue for elegance
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  shadowColor: const Color(0xFF1D4B91).withOpacity(0.4),
+                  elevation: 8,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const NutrientsPage()), // Navigating to NutrientsPage
+                  );
+                },
+                child: const Text(
+                  'Hitung Kebutuhan Nutrisi',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
               const SizedBox(height: 16),
               // Menu Button
-              MouseRegion(
-                onEnter: (_) => _changeButtonColor(true),
-                onExit: (_) => _changeButtonColor(false),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: const Color(0xFF5174B9), // Cool, elegant blue
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    shadowColor: const Color(0xFF5174B9).withOpacity(0.4),
-                    elevation: 8,
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: const Color(0xFF5174B9), // Cool, elegant blue
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const MenuPage()),
-                    );
-                  },
-                  child: const Text(
-                    'Rekomendasi Menu CKD-friendly',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  shadowColor: const Color(0xFF5174B9).withOpacity(0.4),
+                  elevation: 8,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MenuPage()),
+                  );
+                },
+                child: const Text(
+                  'Rekomendasi Menu CKD-friendly',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              // Calories Button
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: const Color(0xFF2A63A3), // Additional blue for calories
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  shadowColor: const Color(0xFF2A63A3).withOpacity(0.4),
+                  elevation: 8,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CaloriesPage()),
+                  );
+                },
+                child: const Text(
+                  'Hitung Kalori',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -207,10 +251,5 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void _changeButtonColor(bool isHovered) {
-    // This method will handle changing the button color on hover, if necessary
-    // (This function can be expanded if you want to track the color change state)
   }
 }

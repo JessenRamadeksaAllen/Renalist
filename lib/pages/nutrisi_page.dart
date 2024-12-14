@@ -72,11 +72,28 @@ class _NutrisiPageState extends State<NutrisiPage> {
             // Name input field
             TextField(
               controller: _nameController,
-              decoration: const InputDecoration(
+              style: const TextStyle(color: Colors.white), // Set the text color to white
+              decoration: InputDecoration(
                 labelText: 'Enter Name',
-                border: OutlineInputBorder(),
+                hintText: 'Enter your name',
+                labelStyle: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+                hintStyle: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.white70,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(
+                    color: Colors.white,
+                    width: 2.0,
+                  ),
+                ),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Colors.white.withOpacity(0.2), // Slight transparency
               ),
             ),
             const SizedBox(height: 16),
@@ -85,11 +102,28 @@ class _NutrisiPageState extends State<NutrisiPage> {
             TextField(
               controller: _ageController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
+              style: const TextStyle(color: Colors.white), // Set the text color to white
+              decoration: InputDecoration(
                 labelText: 'Enter Age',
-                border: OutlineInputBorder(),
+                hintText: 'Enter your age',
+                labelStyle: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+                hintStyle: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.white70,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(
+                    color: Colors.white,
+                    width: 2.0,
+                  ),
+                ),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Colors.white.withOpacity(0.2), // Slight transparency
               ),
             ),
             const SizedBox(height: 16),
@@ -98,11 +132,28 @@ class _NutrisiPageState extends State<NutrisiPage> {
             TextField(
               controller: _weightController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
+              style: const TextStyle(color: Colors.white), // Set the text color to white
+              decoration: InputDecoration(
                 labelText: 'Enter Weight (kg)',
-                border: OutlineInputBorder(),
+                hintText: 'Enter your weight in kilograms',
+                labelStyle: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+                hintStyle: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.white70,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(
+                    color: Colors.white,
+                    width: 2.0,
+                  ),
+                ),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Colors.white.withOpacity(0.2), // Slight transparency
               ),
             ),
             const SizedBox(height: 32),
@@ -119,7 +170,6 @@ class _NutrisiPageState extends State<NutrisiPage> {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:2302543179.
                   color: Colors.white,
                 ),
               ),
